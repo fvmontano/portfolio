@@ -13,7 +13,10 @@
   --white:   #FFFFFF;
 }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  font-size: 300%;
+}
 
 body {
   background: var(--navy);
