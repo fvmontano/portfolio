@@ -693,16 +693,14 @@
     <p class="section-sub">Have a project in mind? Fill out the form and I'll get back to you within 24 hours.</p>
 
     <div class="contact-form">
-      <form id="inquiry-form" action="https://formsubmit.co/fvmontano@gmail.com" method="POST" target="hidden_iframe">
-
-        <!-- Hidden iframe to capture the redirect and keep user on page -->
-        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+      <form id="inquiry-form" action="https://formsubmit.co/fvmontano@gmail.com" method="POST">
 
         <!-- FormSubmit config -->
         <input type="hidden" name="_subject" value="New Inquiry from Portfolio Site" />
         <input type="hidden" name="_captcha" value="false" />
         <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="_next" value="" id="success-redirect" />
+
 
 
         <div class="form-row">
@@ -773,21 +771,42 @@
   const formSuccess = document.getElementById('form-success');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', function() {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
       const submitBtn = this.querySelector('.form-submit');
+      const originalBtnText = submitBtn.textContent;
 
       // Visual feedback: disable button and show loading state
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending...';
 
-      // Since the form submits to a hidden iframe, the page doesn't reload.
-      // We show the success message after a short delay to simulate the network request.
-      setTimeout(() => {
+      try {
+        const formData = new FormData(this);
+
+        // Using 'no-cors' mode is the key here.
+        // It allows us to send the data to FormSubmit without the browser
+        // blocking the request due to CORS, although we can't read the response.
+        await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
+        });
+
+        // Since we are in no-cors mode, the response is "opaque".
+        // We assume success if the fetch didn't throw an error.
         this.style.display = 'none';
         if (formSuccess) formSuccess.style.display = 'block';
-      }, 1500);
+
+      } catch (error) {
+        console.error('Form error:', error);
+        alert('Something went wrong. Please try again or contact me via email.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalBtnText;
+      }
     });
   }
+
 
 
   // Smooth active nav highlighting
