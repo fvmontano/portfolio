@@ -37,51 +37,38 @@
     }
   </script>
 
-  <style type="text/tailwindcss">
-    @layer base {
-      body {
-        @apply bg-dark text-slate-300 font-inter;
-      }
-      h1, h2, h3, .font-syne {
-        @apply font-syne text-slate-100;
-      }
+  <style>
+    /* Ensure smooth transition for animations */
+    [data-aos] {
+      pointer-events: none;
+    }
+    .aos-animate {
+      pointer-events: auto;
     }
 
-    .glass-card {
-      @apply bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl;
-    }
-
-    .btn-primary {
-      @apply bg-accent text-dark font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95;
-    }
-
-    .btn-secondary {
-      @apply bg-slate-800 text-slate-100 font-semibold px-8 py-3 rounded-full border border-slate-700 transition-all duration-300 hover:bg-slate-700 hover:border-slate-600 active:scale-95;
-    }
-
-    .nav-link {
-      @apply text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium;
-    }
-
+    /* Custom gradient text as utility */
     .gradient-text {
-      @apply bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent;
+      background: linear-gradient(to right, #ffffff, #e2e8f0, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
   </style>
 </head>
-<body class="selection:bg-accent/30 selection:text-accent">
+<body class="bg-dark text-slate-300 font-inter selection:bg-accent/30 selection:text-accent">
 
   <!-- NAVIGATION -->
   <nav class="fixed top-0 left-0 right-0 z-50 px-6 py-4">
     <div class="max-w-7xl mx-auto flex items-center justify-between bg-slate-950/80 backdrop-blur-lg border border-slate-800 py-3 px-6 rounded-full">
-      <a href="#" class="font-syne font-800 text-lg text-white tracking-tight">
+      <a href="#" class="font-syne font-extrabold text-lg text-white tracking-tight">
         Francis<span class="text-accent">.</span>Montano
       </a>
 
       <div class="hidden md:flex items-center gap-8">
-        <a href="#services" class="nav-link">Services</a>
-        <a href="#projects" class="nav-link">Portfolio</a>
-        <a href="#about" class="nav-link">About</a>
-        <a href="#contact" class="btn-primary !py-2 !px-5 text-sm">Get In Touch</a>
+        <a href="#services" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium">Services</a>
+        <a href="#projects" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium">Portfolio</a>
+        <a href="#about" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium">About</a>
+        <a href="#contact" class="bg-accent text-dark font-semibold px-5 py-2 rounded-full text-sm transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95">Get In Touch</a>
       </div>
 
       <!-- Mobile Menu Toggle -->
@@ -99,7 +86,7 @@
     <a href="#services" class="text-2xl font-syne text-white" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Services</a>
     <a href="#projects" class="text-2xl font-syne text-white" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Portfolio</a>
     <a href="#about" class="text-2xl font-syne text-white" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
-    <a href="#contact" class="btn-primary text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get In Touch</a>
+    <a href="#contact" class="bg-accent text-dark font-semibold px-8 py-3 rounded-full text-lg" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Get In Touch</a>
   </div>
 
   <!-- HERO SECTION -->
@@ -119,22 +106,22 @@
       </div>
 
       <!-- Headline -->
-      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 gradient-text">
+      <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold leading-tight mb-6 font-syne gradient-text">
         Full Stack Web Developer <br>
-        <span class="text-accent">&amp;</span> AI Video Editor
+        <span class="text-accent">研究 &amp;</span> AI Video Editor
       </h1>
 
       <!-- Subtext -->
-      <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+      <p class="text-slate-400 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed font-inter">
         I build web applications that work and videos that convert.
         Based in the Philippines, serving US businesses remotely with a focus on
         <span class="text-slate-100 font-medium">high-performance systems</span> and <span class="text-slate-100 font-medium">viral content</span>.
       </p>
 
       <!-- Actions -->
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20">
-        <a href="#contact" class="btn-primary w-full sm:w-auto">Get In Touch</a>
-        <a href="#projects" class="btn-secondary w-full sm:w-auto">See My Work</a>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20 font-inter">
+        <a href="#contact" class="bg-accent text-dark font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95 w-full sm:w-auto">Get In Touch</a>
+        <a href="#projects" class="bg-slate-800 text-slate-100 font-semibold px-8 py-3 rounded-full border border-slate-700 transition-all duration-300 hover:bg-slate-700 hover:border-slate-600 active:scale-95 w-full sm:w-auto">See My Work</a>
       </div>
 
       <!-- Hero Visual -->
@@ -148,7 +135,7 @@
   </section>
 
   <!-- TRUSTED BY / SOCIAL PROOF -->
-  <section class="py-20 px-6 border-y border-slate-800 bg-slate-950/50">
+  <section class="py-20 px-6 border-y border-slate-800 bg-slate-950/50 font-inter">
     <div class="max-w-7xl mx-auto">
       <p class="text-center text-slate-500 text-sm font-medium uppercase tracking-widest mb-10">Building solutions for high-impact businesses</p>
       <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-60 grayscale hover:grayscale-0 transition-all duration-500">
@@ -160,11 +147,11 @@
   </section>
 
   <!-- SERVICES -->
-  <section id="services" class="py-32 px-6">
+  <section id="services" class="py-32 px-6 font-inter">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20" data-aos="fade-up">
         <span class="text-accent text-sm font-semibold uppercase tracking-widest">What I Do</span>
-        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Premium Digital Services</h2>
+        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6 font-syne text-slate-100">Premium Digital Services</h2>
         <p class="text-slate-400 max-w-2xl mx-auto text-lg">
           End-to-end web development, AI-powered video editing, and workflow automation — designed for growth.
         </p>
@@ -172,11 +159,11 @@
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Dev -->
-        <div class="glass-card p-8 group" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl p-8 group" data-aos="fade-up" data-aos-delay="100">
           <div class="w-14 h-14 bg-accent/10 text-accent flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
             <i data-lucide="code-2" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Web Development</h3>
+          <h3 class="text-2xl font-bold mb-4 font-syne text-slate-100">Web Development</h3>
           <p class="text-slate-400 leading-relaxed mb-8">
             Custom full stack web applications built from scratch — from database architecture to pixel-perfect frontend. No templates, no shortcuts.
           </p>
@@ -188,11 +175,11 @@
         </div>
 
         <!-- Video -->
-        <div class="glass-card p-8 group" data-aos="fade-up" data-aos-delay="200">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl p-8 group" data-aos="fade-up" data-aos-delay="200">
           <div class="w-14 h-14 bg-blueAccent/10 text-blueAccent flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
             <i data-lucide="video" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-4">AI Video Editing</h3>
+          <h3 class="text-2xl font-bold mb-4 font-syne text-slate-100">AI Video Editing</h3>
           <p class="text-slate-400 leading-relaxed mb-8">
             Short-form content, product demos, reels, and promos edited with AI tools for speed without sacrificing quality. Perfect for DTC brands and e-commerce.
           </p>
@@ -204,11 +191,11 @@
         </div>
 
         <!-- Automation -->
-        <div class="glass-card p-8 group" data-aos="fade-up" data-aos-delay="300">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl p-8 group" data-aos="fade-up" data-aos-delay="300">
           <div class="w-14 h-14 bg-yellow-500/10 text-yellow-500 flex items-center justify-center rounded-2xl mb-6 group-hover:scale-110 transition-transform duration-300">
             <i data-lucide="zap" class="w-7 h-7"></i>
           </div>
-          <h3 class="text-2xl font-bold mb-4">Workflow Automation</h3>
+          <h3 class="text-2xl font-bold mb-4 font-syne text-slate-100">Workflow Automation</h3>
           <p class="text-slate-400 leading-relaxed mb-8">
             Connect your tools, eliminate manual tasks, and keep your business running smoothly. I map, build, and maintain your automations.
           </p>
@@ -223,11 +210,11 @@
   </section>
 
   <!-- PROJECTS -->
-  <section id="projects" class="py-32 px-6 bg-slate-900/30">
+  <section id="projects" class="py-32 px-6 bg-slate-900/30 font-inter">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-20" data-aos="fade-up">
         <span class="text-accent text-sm font-semibold uppercase tracking-widest">Portfolio</span>
-        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Selected Work</h2>
+        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6 font-syne text-slate-100">Selected Work</h2>
         <p class="text-slate-400 max-w-2xl mx-auto text-lg">
           Real applications built, deployed, and actively used by businesses to drive efficiency and revenue.
         </p>
@@ -235,13 +222,13 @@
 
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <!-- Project 1 -->
-        <div class="glass-card overflow-hidden group" data-aos="fade-up">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl overflow-hidden group" data-aos="fade-up">
           <div class="relative overflow-hidden">
             <img src="images/ChartTrax.png" alt="ChartTrax" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute top-4 left-4 bg-blueAccent text-white text-xs font-bold px-3 py-1 rounded-full">Web Application</div>
           </div>
           <div class="p-8">
-            <h3 class="text-2xl font-bold mb-3">ChartTrax</h3>
+            <h3 class="text-2xl font-bold mb-3 font-syne text-slate-100">ChartTrax</h3>
             <p class="text-slate-400 leading-relaxed mb-6">
               A complete data entry and records management system built for MedCopy USA. Handles client records, data workflows, and reporting, used company-wide daily.
             </p>
@@ -254,13 +241,13 @@
         </div>
 
         <!-- Project 2 -->
-        <div class="glass-card overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl overflow-hidden group" data-aos="fade-up" data-aos-delay="100">
           <div class="relative overflow-hidden">
             <img src="images/Elite-RockChip 2.png" alt="Elite RockChip" class="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500">
             <div class="absolute top-4 left-4 bg-blueAccent text-white text-xs font-bold px-3 py-1 rounded-full">CRM System</div>
           </div>
           <div class="p-8">
-            <h3 class="text-2xl font-bold mb-3">Elite RockChip Repair CRM</h3>
+            <h3 class="text-2xl font-bold mb-3 font-syne text-slate-100">Elite RockChip Repair CRM</h3>
             <p class="text-slate-400 leading-relaxed mb-6">
               A custom CRM web application for Elite RockChip Repair — built to manage customers, track repair jobs, and organize their day-to-day business operations.
             </p>
@@ -273,7 +260,7 @@
         </div>
 
         <!-- Project 3 (AI Ads) - Full Width on LG -->
-        <div class="glass-card overflow-hidden group lg:col-span-2" data-aos="fade-up">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 hover:border-accent/50 transition-all duration-300 rounded-3xl overflow-hidden group lg:col-span-2" data-aos="fade-up">
           <div class="grid grid-cols-1 lg:grid-cols-2 h-full">
             <div class="relative overflow-hidden">
               <div class="w-full h-full bg-gradient-to-br from-slate-800 to-slate-950 flex items-center justify-center min-h-[300px]">
@@ -282,8 +269,8 @@
               <div class="absolute top-4 left-4 bg-accent text-dark text-xs font-bold px-3 py-1 rounded-full">AI Video Editing</div>
             </div>
             <div class="p-8 lg:p-12 flex flex-col justify-center">
-              <h3 class="text-3xl font-bold mb-4">AI Ad Samples — DTC & E-Commerce</h3>
-              <p class="text-slate-400 leading-relaxed mb-8 text-lg">
+              <h3 class="text-3xl font-bold mb-4 font-syne text-slate-100">AI Ad Samples — DTC & E-Commerce</h3>
+              <p class="text-slate-400 leading-relaxed mb-8 text-lg font-inter">
                 Short-form ad content and product reels created using AI video tools for DTC and e-commerce brands. Demonstrates fast turnaround, on-brand visuals, and publish-ready quality.
               </p>
               <div class="flex flex-wrap gap-2">
@@ -299,11 +286,11 @@
   </section>
 
   <!-- ABOUT SECTION -->
-  <section id="about" class="py-32 px-6">
+  <section id="about" class="py-32 px-6 font-inter">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
       <div data-aos="fade-right">
         <span class="text-accent text-sm font-semibold uppercase tracking-widest">About Me</span>
-        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-8 leading-tight">Analytical Mind, <br><span class="text-slate-400">Creative Execution</span></h2>
+        <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-8 leading-tight font-syne text-slate-100">Analytical Mind, <br><span class="text-slate-400">Creative Execution</span></h2>
         <div class="space-y-6 text-slate-400 text-lg leading-relaxed">
           <p>
             I'm <strong class="text-white">Francis Montano</strong>, a Full Stack Web Developer and AI Video Editor based in Batangas, Philippines. I've been working remotely with US-based clients since 2024 and I'm fully available during US business hours.
@@ -316,24 +303,24 @@
           </p>
         </div>
         <div class="mt-10">
-          <a href="#contact" class="btn-primary">Work With Me</a>
+          <a href="#contact" class="bg-accent text-dark font-semibold px-8 py-3 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95 inline-block">Work With Me</a>
         </div>
       </div>
 
       <div class="grid grid-cols-2 gap-4" data-aos="fade-left">
-        <div class="glass-card p-8 text-center">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-3xl p-8 text-center">
           <span class="block text-4xl font-extrabold text-accent mb-2 font-syne">2+</span>
           <span class="text-slate-500 text-xs uppercase font-bold tracking-wider">Years Remote Exp</span>
         </div>
-        <div class="glass-card p-8 text-center">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-3xl p-8 text-center">
           <span class="block text-4xl font-extrabold text-accent mb-2 font-syne">2</span>
           <span class="text-slate-500 text-xs uppercase font-bold tracking-wider">Live Web Apps</span>
         </div>
-        <div class="glass-card p-8 text-center">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-3xl p-8 text-center">
           <span class="block text-4xl font-extrabold text-accent mb-2 font-syne">US</span>
           <span class="text-slate-500 text-xs uppercase font-bold tracking-wider">Hours Available</span>
         </div>
-        <div class="glass-card p-8 text-center">
+        <div class="bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-3xl p-8 text-center">
           <span class="block text-4xl font-extrabold text-accent mb-2 font-syne">3</span>
           <span class="text-slate-500 text-xs uppercase font-bold tracking-wider">Core Services</span>
         </div>
@@ -342,28 +329,28 @@
   </section>
 
   <!-- CLOSING CTA -->
-  <section class="py-32 px-6">
+  <section class="py-32 px-6 font-inter">
     <div class="max-w-5xl mx-auto rounded-[3rem] bg-gradient-to-br from-accent/20 via-blueAccent/20 to-slate-900 p-12 md:p-20 text-center border border-white/10 relative overflow-hidden" data-aos="zoom-in">
       <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none"></div>
-      <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">Ready to elevate your <br>digital presence?</h2>
+      <h2 class="text-4xl md:text-6xl font-bold mb-6 leading-tight font-syne text-slate-100">Ready to elevate your <br>digital presence?</h2>
       <p class="text-slate-300 text-lg mb-10 max-w-xl mx-auto">
-        Stop settling for templates. Let's build something a a high-performing system that actually works for your business.
+        Stop settling for templates. Let's build a high-performing system that actually works for your business.
       </p>
-      <a href="#contact" class="btn-primary text-lg px-12">Start Your Project</a>
+      <a href="#contact" class="bg-accent text-dark font-semibold px-12 py-4 rounded-full text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95 inline-block">Start Your Project</a>
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
-  <section id="contact" class="py-32 px-6">
+  <section id="contact" class="py-32 px-6 font-inter">
     <div class="max-w-3xl mx-auto text-center mb-16" data-aos="fade-up">
       <span class="text-accent text-sm font-semibold uppercase tracking-widest">Get In Touch</span>
-      <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6">Let's Work Together</h2>
+      <h2 class="text-4xl md:text-6xl font-bold mt-4 mb-6 font-syne text-slate-100">Let's Work Together</h2>
       <p class="text-slate-400 text-lg">
         Have a project in mind? Fill out the form and I'll get back to you within 24 hours.
       </p>
     </div>
 
-    <div class="max-w-2xl mx-auto glass-card p-8 md:p-12" data-aos="fade-up">
+    <div class="max-w-2xl mx-auto bg-slate-900/50 backdrop-blur-md border border-slate-800 rounded-3xl p-8 md:p-12" data-aos="fade-up">
       <form id="inquiry-form" action="https://formsubmit.co/fvmontano@gmail.com" method="POST" class="space-y-6">
 
         <!-- FormSubmit config -->
@@ -413,7 +400,7 @@
           <textarea id="message" name="message" placeholder="Describe what you need, your timeline, and any important details…" required class="w-full bg-slate-950 border border-slate-800 text-slate-100 rounded-xl px-4 py-3 outline-none focus:border-accent transition-colors min-h-[150px]"></textarea>
         </div>
 
-        <button type="submit" class="btn-primary w-full py-4 text-lg group">
+        <button type="submit" class="bg-accent text-dark font-semibold w-full py-4 text-lg rounded-full transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(34,211,238,0.4)] active:scale-95 group">
           Send Message <i data-lucide="arrow-right" class="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
         </button>
 
@@ -428,10 +415,10 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="py-20 px-6 border-t border-slate-800 bg-slate-950">
+  <footer class="py-20 px-6 border-t border-slate-800 bg-slate-950 font-inter">
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
       <div class="col-span-1 md:col-span-2">
-        <a href="#" class="font-syne font-800 text-2xl text-white tracking-tight mb-6 block">
+        <a href="#" class="font-syne font-extrabold text-2xl text-white tracking-tight mb-6 block">
           Francis<span class="text-accent">.</span>Montano
         </a>
         <p class="text-slate-400 max-w-sm leading-relaxed mb-8">
@@ -450,18 +437,18 @@
       <div>
         <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Quick Links</h4>
         <ul class="space-y-4">
-          <li><a href="#services" class="nav-link block">Services</a></li>
-          <li><a href="#projects" class="nav-link block">Portfolio</a></li>
-          <li><a href="#about" class="nav-link block">About Me</a></li>
-          <li><a href="#contact" class="nav-link block">Contact</a></li>
+          <li><a href="#services" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium block">Services</a></li>
+          <li><a href="#projects" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium block">Portfolio</a></li>
+          <li><a href="#about" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium block">About Me</a></li>
+          <li><a href="#contact" class="text-slate-400 hover:text-accent transition-colors duration-200 text-sm font-medium block">Contact</a></li>
         </ul>
       </div>
 
       <div>
         <h4 class="text-white font-bold mb-6 uppercase tracking-widest text-xs">Legal</h4>
         <ul class="space-y-4">
-          <li><span class="nav-link block">© 2026 Francis Montano</span></li>
-          <li><span class="nav-link block">Batangas, Philippines</span></li>
+          <li><span class="text-slate-400 text-sm font-medium block">© 2026 Francis Montano</span></li>
+          <li><span class="text-slate-400 text-sm font-medium block">Batangas, Philippines</span></li>
         </ul>
       </div>
     </div>
@@ -478,18 +465,14 @@
       easing: 'ease-out-quad',
     });
 
-    // Form Submit Handling
+    // Basic form handling if needed (FormSubmit handles the action)
     const form = document.getElementById('inquiry-form');
     const successMsg = document.getElementById('form-success');
 
-    form.addEventListener('submit', async (e) => {
-      // We let FormSubmit handle the redirect/action, but we can add a local success state
-      // if we were using AJAX. Since it's a standard POST, we'll rely on their success page
-      // unless the user wants a custom redirect.
+    form.addEventListener('submit', () => {
+      // Since FormSubmit is a direct POST, the page usually redirects.
+      // If you want a local success message without redirecting, you'd need AJAX.
     });
-
-    // The existing logic for form-success was just a placeholder in the old site
-    // since FormSubmit redirects. I've kept the ID and element for consistency.
   </script>
 </body>
 </html>
