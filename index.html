@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Francis Montano — Web Developer & AI Video Editor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #0B1120;
+      --slate:   #131D30;
+      --panel:   #1A2640;
+      --border:  #253450;
+      --blue:    #2563EB;
+      --cyan:    #38BDF8;
+      --gold:    #F59E0B;
+      --text:    #E2E8F0;
+      --muted:   #8899B4;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.1rem 2.5rem;
+      background: rgba(11,17,32,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800; font-size: 1.1rem;
+      color: var(--white); letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--cyan); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a {
+      color: var(--muted); font-size: 0.9rem; text-decoration: none;
+      transition: color 0.2s;
+    }
+    nav ul a:hover { color: var(--white); }
+    .nav-cta {
+      background: var(--blue); color: var(--white) !important;
+      padding: 0.45rem 1.2rem; border-radius: 6px;
+      font-weight: 500; transition: background 0.2s !important;
+    }
+    .nav-cta:hover { background: #1d4ed8 !important; color: var(--white) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 7rem 2rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 50%, rgba(37,99,235,0.13) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 30%, rgba(56,189,248,0.08) 0%, transparent 70%);
+    }
+    .hero-grid {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(37,99,235,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(37,99,235,0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      position: relative; z-index: 1;
+      max-width: 860px; text-align: center;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(37,99,235,0.15); border: 1px solid rgba(37,99,235,0.35);
+      color: var(--cyan); font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em;
+      padding: 0.35rem 1rem; border-radius: 100px;
+      margin-bottom: 2rem; text-transform: uppercase;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 800; line-height: 1.1;
+      color: var(--white); letter-spacing: -0.03em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 .line-dev { display: block; }
+    .hero h1 .line-and {
+      display: block;
+      color: var(--muted); font-weight: 400;
+      font-size: 0.55em; letter-spacing: 0.1em;
+      text-transform: uppercase; margin: 0.3em 0;
+    }
+    .hero h1 .line-vid { display: block; color: var(--cyan); }
+
+    .hero-sub {
+      font-size: 1.05rem; color: var(--muted);
+      max-width: 580px; margin: 0 auto 2.5rem;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: var(--white);
+      padding: 0.75rem 2rem; border-radius: 8px;
+      font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; border: none; cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-primary:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .btn-secondary {
+      background: transparent; color: var(--text);
+      padding: 0.75rem 2rem; border-radius: 8px;
+      font-weight: 500; font-size: 0.95rem;
+      text-decoration: none; border: 1px solid var(--border);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-block;
+    }
+    .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); transform: translateY(-1px); }
+
+    .hero-stack {
+      display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;
+      margin-top: 3rem;
+    }
+    .stack-tag {
+      background: var(--panel); border: 1px solid var(--border);
+      color: var(--muted); font-size: 0.78rem;
+      padding: 0.3rem 0.8rem; border-radius: 4px;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 6rem 2rem; }
+    .section-inner { max-width: 1000px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 700; color: var(--white);
+      letter-spacing: -0.02em; line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      color: var(--muted); font-size: 1rem;
+      max-width: 560px; margin-bottom: 3rem;
+    }
+
+    /* ── SERVICES ── */
+    #services { background: var(--slate); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .service-card:hover { border-color: var(--blue); transform: translateY(-3px); }
+    .service-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; margin-bottom: 1.2rem;
+    }
+    .icon-dev { background: rgba(37,99,235,0.15); }
+    .icon-vid { background: rgba(56,189,248,0.12); }
+    .icon-auto { background: rgba(245,158,11,0.12); }
+    .service-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.6rem;
+    }
+    .service-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+    .service-tag {
+      font-size: 0.72rem; padding: 0.2rem 0.6rem;
+      border-radius: 4px; border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    /* ── PROJECTS ── */
+    #projects { background: var(--navy); }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .project-card {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 12px; padding: 2rem;
+      transition: border-color 0.25s, transform 0.2s;
+    }
+    .project-card:hover { border-color: var(--cyan); transform: translateY(-3px); }
+    .project-type {
+      font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 0.8rem;
+    }
+    .type-dev { color: var(--blue); }
+    .type-vid { color: var(--cyan); }
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.15rem; font-weight: 700;
+      color: var(--white); margin-bottom: 0.5rem;
+    }
+    .project-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.2rem; }
+    .project-stack span {
+      font-size: 0.72rem; padding: 0.2rem 0.6rem;
+      background: rgba(37,99,235,0.1); border: 1px solid rgba(37,99,235,0.25);
+      color: var(--cyan); border-radius: 4px;
+    }
+
+    /* ── ABOUT ── */
+    #about { background: var(--slate); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .about-text p { color: var(--muted); margin-bottom: 1.2rem; line-height: 1.8; font-size: 0.95rem; }
+    .about-text p strong { color: var(--text); }
+    .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .stat-box {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem; text-align: center;
+    }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2rem; font-weight: 800;
+      color: var(--cyan); display: block;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--navy); }
+    .contact-wrap {
+      max-width: 640px; margin: 0 auto; text-align: center;
+    }
+    .contact-wrap .section-title { margin-bottom: 0.5rem; }
+    .contact-wrap .section-sub { margin: 0 auto 2.5rem; }
+
+    .contact-form {
+      background: var(--panel); border: 1px solid var(--border);
+      border-radius: 16px; padding: 2.5rem; text-align: left;
+    }
+    .form-group { margin-bottom: 1.2rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    label {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      color: var(--muted); margin-bottom: 0.4rem; letter-spacing: 0.02em;
+    }
+    input, textarea, select {
+      width: 100%;
+      background: var(--slate); border: 1px solid var(--border);
+      color: var(--text); font-family: 'Inter', sans-serif;
+      font-size: 0.92rem; padding: 0.7rem 1rem;
+      border-radius: 8px; outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--blue); }
+    input::placeholder, textarea::placeholder { color: var(--border); }
+    textarea { resize: vertical; min-height: 130px; }
+    select option { background: var(--slate); }
+    .form-submit {
+      width: 100%; padding: 0.85rem;
+      background: var(--blue); color: var(--white);
+      border: none; border-radius: 8px; cursor: pointer;
+      font-family: 'Syne', sans-serif; font-weight: 700;
+      font-size: 1rem; letter-spacing: 0.02em;
+      transition: background 0.2s, transform 0.15s;
+      margin-top: 0.5rem;
+    }
+    .form-submit:hover { background: #1d4ed8; transform: translateY(-1px); }
+    .form-note {
+      text-align: center; font-size: 0.78rem;
+      color: var(--muted); margin-top: 1rem;
+    }
+    .form-success {
+      display: none; text-align: center;
+      padding: 2rem; color: var(--cyan);
+      font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--slate); border-top: 1px solid var(--border);
+      padding: 2rem; text-align: center;
+      color: var(--muted); font-size: 0.82rem;
+    }
+    footer a { color: var(--cyan); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav ul { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.25rem; }
+      section { padding: 4rem 1.25rem; }
+      .contact-form { padding: 1.5rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Francis<span>.</span></div>
+  <ul>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">Available for Remote Work</div>
+    <h1>
+      <span class="line-dev">Full Stack Web Developer</span>
+      <span class="line-and">&amp;</span>
+      <span class="line-vid">AI Video Editor</span>
+    </h1>
+    <p class="hero-sub">
+      I build web applications that work and videos that convert.
+      Based in the Philippines, serving US businesses remotely since 2024.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn-secondary">See My Work</a>
+    </div>
+    <div class="hero-stack">
+      <span class="stack-tag">PHP</span>
+      <span class="stack-tag">JavaScript</span>
+      <span class="stack-tag">CSS</span>
+      <span class="stack-tag">Azure SQL</span>
+      <span class="stack-tag">Make.com</span>
+      <span class="stack-tag">GoHighLevel</span>
+      <span class="stack-tag">Postman</span>
+      <span class="stack-tag">CapCut</span>
+      <span class="stack-tag">ElevenLabs</span>
+      <span class="stack-tag">HeyGen</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <p class="section-label">What I Do</p>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">End-to-end web development, AI-powered video editing, and workflow automation — all under one roof.</p>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon icon-dev">💻</div>
+        <h3>Web Development</h3>
+        <p>Custom full stack web applications built from scratch — from database architecture to pixel-perfect frontend. No templates, no shortcuts.</p>
+        <div class="service-tags">
+          <span class="service-tag">PHP</span>
+          <span class="service-tag">JavaScript</span>
+          <span class="service-tag">CSS</span>
+          <span class="service-tag">Azure SQL</span>
+          <span class="service-tag">MS Access</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-vid">🎬</div>
+        <h3>AI Video Editing</h3>
+        <p>Short-form content, product demos, reels, and promos edited with AI tools for speed without sacrificing quality. Perfect for DTC brands and e-commerce.</p>
+        <div class="service-tags">
+          <span class="service-tag">CapCut</span>
+          <span class="service-tag">ElevenLabs</span>
+          <span class="service-tag">HeyGen</span>
+          <span class="service-tag">Higgsfield</span>
+          <span class="service-tag">Google Flow</span>
+        </div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon icon-auto">⚡</div>
+        <h3>Workflow Automation</h3>
+        <p>Connect your tools, eliminate manual tasks, and keep your business running smoothly — even while you sleep. I map, build, and maintain your automations.</p>
+        <div class="service-tags">
+          <span class="service-tag">Make.com</span>
+          <span class="service-tag">GoHighLevel</span>
+          <span class="service-tag">Postman</span>
+          <span class="service-tag">API Integration</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-inner">
+    <p class="section-label">Portfolio</p>
+    <h2 class="section-title">Live Projects</h2>
+    <p class="section-sub">Real applications built, deployed, and actively used by real businesses.</p>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <p class="project-type type-dev">Web Application</p>
+        <h3>Chartrax</h3>
+        <p>A complete data entry and records management system built for MedCopy USA — a US-based healthcare company. Handles client records, data workflows, and reporting, used company-wide daily.</p>
+        <div class="project-stack">
+          <span>PHP</span><span>JavaScript</span><span>CSS</span><span>Azure SQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-type type-dev">CRM System</p>
+        <h3>Elite RockChip Repair CRM</h3>
+        <p>A custom CRM web application for Elite RockChip Repair — built to manage customers, track repair jobs, and organize their day-to-day business operations from one place.</p>
+        <div class="project-stack">
+          <span>PHP</span><span>JavaScript</span><span>CSS</span><span>Azure SQL</span>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <p class="project-type type-vid">AI Video Editing</p>
+        <h3>AI Ad Samples — DTC & E-Commerce</h3>
+        <p>Short-form ad content and product reels created using AI video tools for DTC and e-commerce brands. Demonstrates fast turnaround, on-brand visuals, and publish-ready quality.</p>
+        <div class="project-stack">
+          <span>CapCut</span><span>ElevenLabs</span><span>HeyGen</span><span>Google Flow</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">Who I Am</h2>
+        <p>I'm <strong>Francis Montano</strong>, a Full Stack Web Developer and AI Video Editor based in Batangas, Philippines. I've been working remotely with US-based clients since 2024 and I'm fully available during US business hours.</p>
+        <p>My background is in <strong>Mathematics with Computer Science</strong> from the University of Santo Tomas — which means I approach problems analytically and build solutions that actually make sense, not just ones that look good on the surface.</p>
+        <p>I communicate clearly in English, take full ownership of my work from start to finish, and I don't disappear once a project is delivered. Whether it's a web app, a video, or an automation flow — I'm the kind of person who figures it out.</p>
+        <div style="margin-top:2rem;">
+          <a href="#contact" class="btn-primary">Work With Me</a>
+        </div>
+      </div>
+      <div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <span class="stat-num">2+</span>
+            <span class="stat-label">Years Remote Experience</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">2</span>
+            <span class="stat-label">Live Web Apps Deployed</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">US</span>
+            <span class="stat-label">Business Hours Available</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Core Service Areas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrap">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Let's Work Together</h2>
+    <p class="section-sub">Have a project in mind? Fill out the form and I'll get back to you within 24 hours.</p>
+
+    <div class="contact-form">
+      <form id="inquiry-form" action="https://formsubmit.co/fvmontano@gmail.com" method="POST">
+
+        <!-- FormSubmit config -->
+        <input type="hidden" name="_subject" value="New Inquiry from Portfolio Site" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_next" value="" id="success-redirect" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="John Smith" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="john@company.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="service">Service Needed</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service…</option>
+            <option value="Web Development">Web Development</option>
+            <option value="AI Video Editing">AI Video Editing</option>
+            <option value="Workflow Automation">Workflow Automation</option>
+            <option value="Multiple Services">Multiple Services</option>
+            <option value="Not sure yet">Not sure yet — let's talk</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="budget">Approximate Budget (USD)</label>
+          <select id="budget" name="budget">
+            <option value="" disabled selected>Select a range…</option>
+            <option value="Under $500">Under $500</option>
+            <option value="$500 – $1,000">$500 – $1,000</option>
+            <option value="$1,000 – $3,000">$1,000 – $3,000</option>
+            <option value="$3,000+">$3,000+</option>
+            <option value="Let's discuss">Let's discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Tell Me About Your Project</label>
+          <textarea id="message" name="message" placeholder="Describe what you need, your timeline, and any important details…" required></textarea>
+        </div>
+
+        <button type="submit" class="form-submit">Send Message →</button>
+        <p class="form-note">📩 Replies within 24 hours · 🕐 Available during US business hours</p>
+      </form>
+      <div class="form-success" id="form-success">
+        ✅ Message sent! I'll get back to you within 24 hours.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Francis V. Montano · Batangas, Philippines · <a href="mailto:fvmontano@gmail.com">fvmontano@gmail.com</a> · <a href="tel:+639178575881">+63 917 857 5881</a></p>
+</footer>
+
+<script>
+  // Smooth active nav highlighting
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('nav ul a[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === '#' + current ? 'var(--white)' : '';
+    });
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .project-card, .stat-box').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
