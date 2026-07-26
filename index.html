@@ -537,7 +537,7 @@
       <div class="project-card">
         <div class="project-shot">
           <div class="project-shot-bar"><span class="shot-dot-a"></span><span class="shot-dot-b"></span><span class="shot-dot-c"></span></div>
-          <img src="images/chartrax.png" alt="Chartrax medical chart request dashboard showing search filters and a records list" loading="lazy">
+          <img src="images/chartrax.png" alt="Chartrax medical chart request dashboard showing search filters and a records list">
         </div>
         <p class="project-type type-dev">Web Application</p>
         <h3>Chartrax</h3>
@@ -550,7 +550,7 @@
       <div class="project-card">
         <div class="project-shot">
           <div class="project-shot-bar"><span class="shot-dot-a"></span><span class="shot-dot-b"></span><span class="shot-dot-c"></span></div>
-          <img src="images/elite-rockchip.png" alt="Elite RockChip Repair CRM customer list with vehicle records" loading="lazy">
+          <img src="images/elite-rockchip.png" alt="Elite RockChip Repair CRM customer list with vehicle records">
         </div>
         <p class="project-type type-dev">CRM System</p>
         <h3>Elite RockChip Repair CRM</h3>
@@ -642,7 +642,7 @@
   <div class="section-inner">
     <div class="about-grid">
       <div class="about-photo">
-        <img src="images/portfolio-picture.png" alt="Portrait of Francis Montano" loading="lazy">
+        <img src="images/portfolio-picture.png" alt="Portrait of Francis Montano">
       </div>
       <div class="about-text">
         <p class="section-label">04:00:00:00 — About Me</p>
@@ -695,17 +695,17 @@
         <div class="form-row">
           <div class="form-group">
             <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="John Smith" required />
+            <input type="text" id="name" name="name" placeholder="John Smith" autocomplete="name" required />
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="john@company.com" required />
+            <input type="email" id="email" name="email" placeholder="john@company.com" autocomplete="email" required />
           </div>
         </div>
 
         <div class="form-group">
           <label for="service">Service Needed</label>
-          <select id="service" name="service" required>
+          <select id="service" name="service" autocomplete="organization-title" required>
             <option value="" disabled selected>Select a service…</option>
             <option value="Web Development">Web Development</option>
             <option value="AI Video Editing">AI Video Editing</option>
@@ -717,7 +717,7 @@
 
         <div class="form-group">
           <label for="budget">Approximate Budget (USD)</label>
-          <select id="budget" name="budget">
+          <select id="budget" name="budget" autocomplete="off">
             <option value="" disabled selected>Select a range…</option>
             <option value="Under $500">Under $500</option>
             <option value="$500 – $1,000">$500 – $1,000</option>
@@ -729,7 +729,7 @@
 
         <div class="form-group">
           <label for="message">Tell Me About Your Project</label>
-          <textarea id="message" name="message" placeholder="Describe what you need, your timeline, and any important details…" required></textarea>
+          <textarea id="message" name="message" placeholder="Describe what you need, your timeline, and any important details…" autocomplete="off" required></textarea>
         </div>
 
         <button type="submit" class="form-submit">Send Message →</button>
