@@ -221,6 +221,13 @@ section { padding: 6rem 2rem; }
   color: var(--cyan); border-radius: 4px;
 }
 
+/* Project card thumbnail */
+.project-thumb {
+  display: block; width: 100%; height: auto;
+  border-radius: 10px; margin-bottom: 1rem;
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
 /* ── ABOUT ── */
 #about { background: var(--slate); }
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
