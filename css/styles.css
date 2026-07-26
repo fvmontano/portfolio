@@ -15,7 +15,11 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 300%;
+  /* Fluid base font-size: every rem value in this file is relative to this,
+     so the whole page scales smoothly with the viewport instead of being
+     fixed at one giant size. 15px on small phones, 18px on large desktops,
+     scaling linearly in between. */
+  font-size: clamp(15px, 13.9px + 0.28vw, 18px);
 }
 
 body {
