@@ -238,6 +238,9 @@ section { padding: 6rem 2rem; }
 }
 .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 0.2rem; }
 
+/* Small utilities */
+.about-cta { margin-top: 2rem; }
+
 /* ── CONTACT ── */
 #contact { background: var(--navy); }
 .contact-wrap {
