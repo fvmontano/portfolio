@@ -283,7 +283,39 @@
     .shot-dot-a { background: var(--blue); }
     .shot-dot-b { background: var(--cyan); }
     .shot-dot-c { background: var(--border); }
-    .project-shot img { display: block; width: 100%; height: auto; }
+    .project-shot img, .project-preview-video { display: block; width: 100%; height: auto; }
+    .project-preview-video { cursor: pointer; }
+
+    /* ── PROJECT VIDEO SLIDER ── */
+    .project-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 0;
+      scrollbar-width: none; /* Firefox */
+    }
+    .project-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
+    .slide-item {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+    }
+    .slide-item video {
+      width: 100%;
+      display: block;
+      cursor: pointer;
+    }
+    .slider-nav {
+      position: absolute; bottom: 10px; right: 10px;
+      display: flex; gap: 5px; z-index: 10;
+    }
+    .slider-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.3); transition: background 0.2s;
+    }
+    .slider-dot.active { background: var(--blue); }
+
+
 
     /* ── VIDEO PORTFOLIO ── */
     #video-portfolio { background: var(--slate); }
