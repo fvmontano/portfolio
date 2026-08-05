@@ -286,38 +286,6 @@
     .project-shot img, .project-preview-video { display: block; width: 100%; height: auto; }
     .project-preview-video { cursor: pointer; }
 
-    /* ── PROJECT VIDEO SLIDER ── */
-    .project-slider {
-      position: relative;
-      display: flex;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      gap: 0;
-      scrollbar-width: none; /* Firefox */
-    }
-    .project-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
-    .slide-item {
-      flex: 0 0 100%;
-      scroll-snap-align: start;
-      position: relative;
-    }
-    .slide-item video {
-      width: 100%;
-      display: block;
-      cursor: pointer;
-    }
-    .slider-nav {
-      position: absolute; bottom: 10px; right: 10px;
-      display: flex; gap: 5px; z-index: 10;
-    }
-    .slider-dot {
-      width: 6px; height: 6px; border-radius: 50%;
-      background: rgba(255,255,255,0.3); transition: background 0.2s;
-    }
-    .slider-dot.active { background: var(--blue); }
-
-
-
     /* ── VIDEO PORTFOLIO ── */
     #video-portfolio { background: var(--slate); }
     .video-grid {
@@ -341,6 +309,43 @@
     }
     .video-frame video {
       display: block; width: 100%; height: 100%; object-fit: cover; background: #000;
+    }
+    .video-frame .play-overlay {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem;
+      color: #fff;
+      text-align: center;
+      background: rgba(0, 0, 0, 0.36);
+      cursor: pointer;
+      transition: opacity 0.2s ease, visibility 0.2s ease;
+    }
+    .video-frame .play-overlay.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .play-overlay .play-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 2rem;
+      line-height: 1;
+    }
+    .play-overlay p {
+      margin: 0;
+      font-size: 0.95rem;
+      letter-spacing: 0.01em;
     }
     .video-meta {
       padding: 1.1rem 1.3rem 1.3rem;
@@ -619,84 +624,73 @@
     <p class="section-label">03:00:00:00 — Video Portfolio</p>
     <h2 class="section-title">Recent Edits</h2>
     <p class="section-sub">AI-assisted ad creative and short-form edits for DTC and e-commerce brands. Open each clip directly from the portfolio.</p>
-    <div class="project-slider" id="videoSlider">
-      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
-        <div class="video-card" style="max-width: 800px; width: 100%;">
-          <div class="video-frame">
-            <video controls autoplay muted loop preload="metadata" playsinline poster="images/joltbrew.jpg">
-              <source src="videos/Portfolio2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-meta">
-            <h3>Jolt Brew Coffee</h3>
-            <a href="videos/Portfolio2.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-          </div>
+    <div class="video-grid">
+      <div class="video-card">
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="images/joltbrew.jpg">
+            <source src="videos/Portfolio2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-meta">
+          <h3>Jolt Brew Coffee</h3>
+          <a href="videos/Portfolio2.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
 
-      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
-        <div class="video-card" style="max-width: 800px; width: 100%;">
-          <div class="video-frame">
-            <video controls autoplay muted loop preload="metadata" playsinline poster="images/serum.jpg">
-              <source src="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-meta">
-            <h3>Lumière Glow Serum</h3>
-            <a href="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-          </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="images/serum.jpg">
+            <source src="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-meta">
+          <h3>Lumière Glow Serum</h3>
+          <a href="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
 
-      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
-        <div class="video-card" style="max-width: 800px; width: 100%;">
-          <div class="video-frame">
-            <video controls autoplay muted loop preload="metadata" playsinline poster="images/moch.jpg">
-              <source src="videos/Portfolio2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-meta">
-            <h3>Mochi Finds a Flower</h3>
-            <a href="videos/Portfolio2.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-          </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="images/moch.jpg">
+            <source src="videos/Portfolio2.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-meta">
+          <h3>Mochi Finds a Flower</h3>
+          <a href="videos/Portfolio2.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
 
-      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
-        <div class="video-card" style="max-width: 800px; width: 100%;">
-          <div class="video-frame">
-            <video controls autoplay muted loop preload="metadata" playsinline poster="images/shortform.jpg">
-              <source src="videos/lipsync-video.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-meta">
-            <h3>Avatar Lip-Sync Video</h3>
-            <a href="videos/lipsync-video.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-          </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="images/shortform.jpg">
+            <source src="videos/lipsync-video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-meta">
+          <h3>Avatar Lip-Sync Video</h3>
+          <a href="videos/lipsync-video.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
 
-      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
-        <div class="video-card" style="max-width: 800px; width: 100%;">
-          <div class="video-frame">
-            <video controls autoplay muted loop preload="metadata" playsinline poster="images/shortform.jpg">
-              <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-          </div>
-          <div class="video-meta">
-            <h3>Short Form Video</h3>
-            <a href="videos/Test%20Short%20Edit.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-          </div>
+      <div class="video-card">
+        <div class="video-frame">
+          <video controls preload="metadata" playsinline poster="images/shortform.jpg">
+            <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="video-meta">
+          <h3>Short Form Video</h3>
+          <a href="videos/Test%20Short%20Edit.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
     </div>
-    <div class="slider-nav" id="videoSliderNav"></div>
- </div>
+  </div>
 </section>
 
 <!-- ABOUT -->
@@ -933,11 +927,10 @@
     observer.observe(el);
   });
 
-  // Video hover-to-play logic
+// Video click-to-play logic
   document.querySelectorAll('.video-card').forEach(card => {
     const video = card.querySelector('video');
     if (!video) return;
-    const metaLink = card.querySelector('.video-link');
     const title = (card.querySelector('.video-meta h3')?.textContent || '').trim();
 
     // Generate a simple SVG poster (data URL) to show a thumbnail when the video cannot provide one
@@ -965,86 +958,38 @@
       video.setAttribute('poster', makePoster(title));
     }
 
-    // Try to seek slightly into the video to prime the first frame; wrap in try/catch since some hosts block seeking
-    const prime = () => { try { video.currentTime = 0.1; } catch (e) { /* ignore */ } };
-    video.addEventListener('loadeddata', prime);
-    if (video.readyState >= 2) prime();
+    const overlay = document.createElement('div');
+    overlay.className = 'play-overlay';
+    overlay.innerHTML = `
+      <span class='play-icon'>▶</span>
+      <p>Tap to play</p>
+    `;
+    card.querySelector('.video-frame')?.appendChild(overlay);
+
+    const updateOverlay = () => {
+      overlay.classList.toggle('hidden', !video.paused);
+    };
+
+    video.addEventListener('play', updateOverlay);
+    video.addEventListener('pause', updateOverlay);
+    video.addEventListener('ended', updateOverlay);
+    updateOverlay();
+
+    overlay.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (video.paused) {
+        video.play().catch(e => console.log('Playback blocked:', e));
+      } else {
+        video.pause();
+      }
+    });
 
     video.addEventListener('error', (ev) => {
       console.warn('Video load error:', ev, video.currentSrc);
     });
-
-    card.addEventListener('mouseenter', () => {
-      video.play().catch(e => console.log('Playback blocked:', e));
-    });
-
-    card.addEventListener('mouseleave', () => {
-      video.pause();
-      try { video.currentTime = 0.1; } catch (e) { /* ignore */ }
-    });
   });
 
-  // Video Portfolio Slider Logic
-  (function() {
-    const slider = document.getElementById('videoSlider');
-    const nav = document.getElementById('videoSliderNav');
-    if (!slider || !nav) return;
-
-    const slides = slider.querySelectorAll('.slide-item');
-    let currentIndex = 0;
-    let autoSlideInterval;
-
-    // Create dots
-    slides.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.classList.add('slider-dot');
-      if (i === 0) dot.classList.add('active');
-      dot.addEventListener('click', () => {
-        currentIndex = i;
-        slider.scrollTo({
-          left: slides[i].offsetLeft,
-          behavior: 'smooth'
-        });
-      });
-      nav.appendChild(dot);
-    });
-
-    // Update active dot on scroll
-    slider.addEventListener('scroll', () => {
-      const scrollLeft = slider.scrollLeft;
-      const slideWidth = slides[0]?.offsetWidth || 0;
-      const activeIndex = Math.round(scrollLeft / slideWidth);
-
-      if (activeIndex !== currentIndex) {
-        currentIndex = activeIndex;
-      }
-
-      nav.querySelectorAll('.slider-dot').forEach((dot, i) => {
-        dot.classList.toggle('active', i === activeIndex);
-      });
-    });
-
-    function startAutoSlide() {
-      autoSlideInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        slider.scrollTo({
-          left: slides[currentIndex].offsetLeft,
-          behavior: 'smooth'
-        });
-      }, 5000);
-    }
-
-    function stopAutoSlide() {
-      clearInterval(autoSlideInterval);
-    }
-
-    slider.addEventListener('mouseenter', stopAutoSlide);
-    slider.addEventListener('mouseleave', startAutoSlide);
-
-    startAutoSlide();
-  })();
-
-
+  // Remove slider behavior: show all videos directly in a grid.
 
 </script>
 </body>
