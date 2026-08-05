@@ -956,13 +956,14 @@
       video.setAttribute('poster', makePoster(title));
     }
 
+    const frame = card.querySelector('.video-frame');
     const overlay = document.createElement('div');
     overlay.className = 'play-overlay';
     overlay.innerHTML = `
       <span class='play-icon'>▶</span>
       <p>Tap to play</p>
     `;
-    card.querySelector('.video-frame')?.appendChild(overlay);
+    frame?.appendChild(overlay);
 
     const updateOverlay = () => {
       overlay.classList.toggle('hidden', !video.paused);
