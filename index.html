@@ -627,7 +627,7 @@
     <div class="video-grid">
       <div class="video-card">
         <div class="video-frame">
-          <video muted loop preload="auto" playsinline poster="images/joltbrew.jpg">
+          <video controls preload="metadata" playsinline poster="images/joltbrew.jpg">
             <source src="videos/Portfolio2.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -640,7 +640,7 @@
 
       <div class="video-card">
         <div class="video-frame">
-          <video muted loop preload="auto" playsinline poster="images/serum.jpg">
+          <video controls preload="metadata" playsinline poster="images/serum.jpg">
             <source src="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
@@ -653,22 +653,21 @@
 
       <div class="video-card">
         <div class="video-frame">
-          <video muted loop preload="auto" playsinline poster="images/moch.jpg">
-            <source src="videos/Portfolio2.mp4" type="video/mp4">
+          <video controls preload="metadata" playsinline poster="images/moch.jpg">
+            <source src="videos/claymation.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="video-meta">
           <h3>Mochi Finds a Flower</h3>
-          <a href="videos/Portfolio2.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          <a href="videos/claymation.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
         </div>
       </div>
 
       <div class="video-card">
         <div class="video-frame">
-          <video muted loop preload="auto" playsinline poster="images/lip-sync.jpg">
+          <video controls preload="metadata" playsinline poster="images/lip-sync.jpg">
             <source src="videos/lipsync-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
         </div>
         <div class="video-meta">
@@ -679,9 +678,8 @@
 
       <div class="video-card">
         <div class="video-frame">
-          <video muted loop preload="auto" playsinline poster="images/shortform.jpg">
+          <video controls preload="metadata" playsinline poster="images/shortform.jpg">
             <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
-            Your browser does not support the video tag.
           </video>
         </div>
         <div class="video-meta">
@@ -975,13 +973,30 @@
     video.addEventListener('ended', updateOverlay);
     updateOverlay();
 
-    overlay.addEventListener('click', (event) => {
-      event.stopPropagation();
+    const togglePlayback = () => {
       if (video.paused) {
-        video.play().catch(e => console.log('Playback blocked:', e));
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+          playPromise.catch((error) => {
+            console.warn('Video playback blocked:', error, video.currentSrc);
+          });
+        }
       } else {
         video.pause();
       }
+    };
+
+    frame?.addEventListener('click', (event) => {
+      const clickY = event.clientY - frame.getBoundingClientRect().top;
+      const isControlClick = clickY > frame.clientHeight * 0.88;
+      if (!isControlClick) {
+        togglePlayback();
+      }
+    });
+
+    overlay.addEventListener('click', (event) => {
+      event.stopPropagation();
+      togglePlayback();
     });
 
     video.addEventListener('error', (ev) => {
