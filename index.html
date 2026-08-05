@@ -342,6 +342,26 @@
     .video-frame video {
       display: block; width: 100%; height: 100%; object-fit: cover; background: #000;
     }
+    .video-frame .video-unavailable {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      padding: 1rem;
+      background: rgba(20,18,15,0.85);
+      color: #fff;
+      text-align: center;
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+    .video-frame .video-unavailable a {
+      color: var(--cyan);
+      text-decoration: underline;
+    }
     .video-meta {
       padding: 1.1rem 1.3rem 1.3rem;
       display: flex; align-items: center; justify-content: space-between; gap: 1rem;
@@ -623,8 +643,8 @@
       <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
         <div class="video-card" style="max-width: 800px; width: 100%;">
           <div class="video-frame">
-            <video muted loop preload="auto" playsinline poster="images/joltbrew.jpg">
-              <source src="https://drive.google.com/uc?export=download&id=1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes#t=0.1" type="video/mp4">
+            <video controls autoplay muted loop preload="metadata" playsinline poster="images/joltbrew.jpg">
+              <source src="https://drive.google.com/uc?export=download&id=1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -638,8 +658,9 @@
       <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
         <div class="video-card" style="max-width: 800px; width: 100%;">
           <div class="video-frame">
-            <video muted loop preload="auto" playsinline poster="images/serum.jpg">
-              <source src="https://drive.google.com/uc?export=download&id=1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G#t=0.1" type="video/mp4">
+            <video controls autoplay muted loop preload="metadata" playsinline poster="images/serum.jpg">
+              <source src="videos/Lumi%C3%A8re%20Glow%20Serum.mp4" type="video/mp4">
+              <source src="https://drive.google.com/uc?export=download&id=1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -653,8 +674,8 @@
       <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
         <div class="video-card" style="max-width: 800px; width: 100%;">
           <div class="video-frame">
-            <video muted loop preload="auto" playsinline poster="images/moch.jpg">
-              <source src="https://drive.google.com/uc?export=download&id=1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX#t=0.1" type="video/mp4">
+            <video controls autoplay muted loop preload="metadata" playsinline poster="images/moch.jpg">
+              <source src="https://drive.google.com/uc?export=download&id=1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -668,8 +689,9 @@
       <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
         <div class="video-card" style="max-width: 800px; width: 100%;">
           <div class="video-frame">
-            <video muted loop preload="auto" playsinline poster="images/shortform.jpg">
-              <source src="https://drive.google.com/uc?export=download&id=1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT#t=0.1" type="video/mp4">
+            <video controls autoplay muted loop preload="metadata" playsinline poster="images/shortform.jpg">
+              <source src="videos/lipsync-video.mp4" type="video/mp4">
+              <source src="https://drive.google.com/uc?export=download&id=1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -683,8 +705,8 @@
       <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
         <div class="video-card" style="max-width: 800px; width: 100%;">
           <div class="video-frame">
-            <video muted loop preload="auto" playsinline poster="images/shortform.jpg">
-              <source src="videos/Test%20Short%20Edit.mp4#t=0.1" type="video/mp4">
+            <video controls autoplay muted loop preload="metadata" playsinline poster="images/shortform.jpg">
+              <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -970,34 +992,33 @@
     video.addEventListener('loadeddata', prime);
     if (video.readyState >= 2) prime();
 
-    // If the video errors or never becomes ready, replace it with a safe link to the hosted file
-    function replaceWithLink() {
+    function showUnavailableOverlay() {
+      if (card.querySelector('.video-unavailable')) return;
       const wrapper = document.createElement('div');
-      wrapper.style.padding = '1rem';
-      const a = document.createElement('a');
-      a.href = metaLink ? metaLink.href : (video.currentSrc || '#');
-      a.target = '_blank';
-      a.rel = 'noopener';
-      a.textContent = 'Open video in new tab';
-      a.style.color = 'var(--cyan)';
-      wrapper.appendChild(a);
-      if (video.parentElement) video.parentElement.replaceChild(wrapper, video);
+      wrapper.className = 'video-unavailable';
+      wrapper.innerHTML = `
+        <p>Video unavailable in this browser.</p>
+        <a href="${metaLink ? metaLink.href : (video.currentSrc || '#')}" target="_blank" rel="noopener">Open in new tab</a>
+      `;
+      card.querySelector('.video-frame')?.appendChild(wrapper);
+      try { video.pause(); } catch (e) { /* ignore */ }
     }
 
     video.addEventListener('error', (ev) => {
       console.warn('Video load error:', ev, video.currentSrc);
-      replaceWithLink();
+      showUnavailableOverlay();
     });
 
-    // Fallback: if the video hasn't reached 'haveEnoughData' after 3s, assume it won't and replace with link
+    // Fallback: if the video never reaches enough data after 3s, leave the poster and show an option to open it externally.
     setTimeout(() => {
       if (video.readyState < 3) {
-        console.warn('Video did not become ready, replacing with link:', video.currentSrc);
-        replaceWithLink();
+        console.warn('Video did not become ready, showing fallback overlay:', video.currentSrc);
+        showUnavailableOverlay();
       }
     }, 3000);
 
     card.addEventListener('mouseenter', () => {
+      if (card.querySelector('.video-unavailable')) return;
       video.play().catch(e => console.log('Playback blocked:', e));
     });
 
