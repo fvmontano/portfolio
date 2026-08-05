@@ -288,6 +288,7 @@
 
     /* ── PROJECT VIDEO SLIDER ── */
     .project-slider {
+      position: relative;
       display: flex;
       overflow-x: auto;
       scroll-snap-type: x mandatory;
@@ -618,74 +619,84 @@
     <p class="section-label">03:00:00:00 — Video Portfolio</p>
     <h2 class="section-title">Recent Edits</h2>
     <p class="section-sub">AI-assisted ad creative and short-form edits for DTC and e-commerce brands. Open each clip directly from the portfolio.</p>
-    <div class="video-grid">
-
-      <div class="video-card">
-        <div class="video-frame">
-          <video muted loop preload="auto" playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-meta">
-          <h3>Jolt Brew Coffee</h3>
-          <a href="https://drive.google.com/file/d/1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes/view?usp=drivelink" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-frame">
-          <video muted loop preload="auto" playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-meta">
-          <h3>Lumière Glow Serum</h3>
-          <a href="https://drive.google.com/file/d/1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G/view?usp=drive_link" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+    <div class="project-slider" id="videoSlider">
+      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
+        <div class="video-card" style="max-width: 800px; width: 100%;">
+          <div class="video-frame">
+            <video muted loop preload="auto" playsinline>
+              <source src="https://drive.google.com/uc?export=download&id=1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3>Jolt Brew Coffee</h3>
+            <a href="https://drive.google.com/file/d/1r-6lwEJzjCzWoUy2NtALxO-dwsCNGEes/view?usp=drivelink" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          </div>
         </div>
       </div>
 
-      <div class="video-card">
-        <div class="video-frame">
-          <video muted loop preload="auto" playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-meta">
-          <h3>Mochi Finds a Flower</h3>
-          <a href="https://drive.google.com/file/d/1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX/view?usp=sharing" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
-        </div>
-      </div>
-
-      <div class="video-card">
-        <div class="video-frame">
-          <video muted loop preload="auto" playsinline>
-            <source src="https://drive.google.com/uc?export=download&id=1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-meta">
-          <h3>Avatar Lip-Sync Video</h3>
-          <a href="https://drive.google.com/file/d/1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT/view?usp=sharing" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
+        <div class="video-card" style="max-width: 800px; width: 100%;">
+          <div class="video-frame">
+            <video muted loop preload="auto" playsinline>
+              <source src="https://drive.google.com/uc?export=download&id=1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3>Lumière Glow Serum</h3>
+            <a href="https://drive.google.com/file/d/1SPWj1PpCwDUtJjGvYAlU9uzOdqf3v3G/view?usp=drive_link" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          </div>
         </div>
       </div>
 
-      <div class="video-card">
-        <div class="video-frame">
-          <video muted loop preload="auto" playsinline>
-            <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="video-meta">
-          <h3>Short Form Video</h3>
-          <a href="videos/Test%20Short%20Edit.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
+        <div class="video-card" style="max-width: 800px; width: 100%;">
+          <div class="video-frame">
+            <video muted loop preload="auto" playsinline>
+              <source src="https://drive.google.com/uc?export=download&id=1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3>Mochi Finds a Flower</h3>
+            <a href="https://drive.google.com/file/d/1Cf55UQdiK4JiaRV6XbEE0_QQmPgXaPjX/view?usp=sharing" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          </div>
         </div>
       </div>
 
+      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
+        <div class="video-card" style="max-width: 800px; width: 100%;">
+          <div class="video-frame">
+            <video muted loop preload="auto" playsinline>
+              <source src="https://drive.google.com/uc?export=download&id=1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3>Avatar Lip-Sync Video</h3>
+            <a href="https://drive.google.com/file/d/1BCGjheGvZzko3ZOmUKUCANRPlGdLoKIT/view?usp=sharing" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-item" style="display: flex; justify-content: center; align-items: center;">
+        <div class="video-card" style="max-width: 800px; width: 100%;">
+          <div class="video-frame">
+            <video muted loop preload="auto" playsinline>
+              <source src="videos/Test%20Short%20Edit.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="video-meta">
+            <h3>Short Form Video</h3>
+            <a href="videos/Test%20Short%20Edit.mp4" target="_blank" rel="noopener" class="video-link">Watch Video ↗</a>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="slider-nav" id="videoSliderNav"></div>
+
   </div>
 </section>
 
@@ -947,6 +958,41 @@
       video.currentTime = 0.1; // Reset to 0.1s instead of 0 to avoid black frames
     });
   });
+
+  // Video Portfolio Slider Logic
+  (function() {
+    const slider = document.getElementById('videoSlider');
+    const nav = document.getElementById('videoSliderNav');
+    if (!slider || !nav) return;
+
+    const slides = slider.querySelectorAll('.slide-item');
+
+    // Create dots
+    slides.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('slider-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        slider.scrollTo({
+          left: slides[i].offsetLeft,
+          behavior: 'smooth'
+        });
+      });
+      nav.appendChild(dot);
+    });
+
+    // Update active dot on scroll
+    slider.addEventListener('scroll', () => {
+      const scrollLeft = slider.scrollLeft;
+      const slideWidth = slides[0]?.offsetWidth || 0;
+      const activeIndex = Math.round(scrollLeft / slideWidth);
+
+      nav.querySelectorAll('.slider-dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === activeIndex);
+      });
+    });
+  })();
+
 
 
 </script>
